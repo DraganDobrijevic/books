@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <header>
+        <div class="top-nav-bar">
+            <div class="logo">
+                <a href="#"><p><strong>B O O K S</strong></p></a>
+            </div>
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Log In</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section id="register">
+        <div class="boxRegister">
+            <h1>Apology</h1>
+            {{ message }}
+        </div>
+    </section>
+{% endblock %}

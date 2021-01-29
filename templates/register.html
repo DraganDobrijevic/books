@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <header>
+        <div class="top-nav-bar">
+            <div class="logo">
+                <a href="#"><p><strong>B O O K S</strong></p></a>
+            </div>
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Log In</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section id="register">
+        <div class="boxRegister">
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="fullName" placeholder="Full name" type="name" id="fullName">
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" class="form-control" name="username" placeholder="Username" type="text" id="username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="password" placeholder="Password" type="password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="confirmation" placeholder="Password" type="password">
+                </div>
+                <button class="btn btn-primary" type="submit" id="submit">Register</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

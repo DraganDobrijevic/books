@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Info
+{% endblock %}
+
+{% block main %}
+    <header>
+        <div class="top-nav-bar">
+            <div class="logo">
+                <a href="{{ url_for('search') }}"><p><strong>B O O K S</strong></p></a>
+            </div>
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section id="search">
+        <div class="box scrollbar" id="style-1">
+            <div class="force-overflow">
+                <h2>Details about the book:</h2>
+                <ul>
+                    <li>Title: {{ book.title }}</li>    
+                    <li>Author: {{ book.author }}</li>    
+                    <li>Publication year: {{ book.year }}</li>    
+                    <li>ISBN number: {{ book.isbn }}</li>
+                    <li>Ratings count (Goodreads): {{ old_count }}</li>
+                    <li>Average rating (Goodreads): {{ old_avg }}</li>
+                    <li>Ratings count on our website: {{ new_count }}</li>
+                    <li>Average rating on our website: {{ new_avg }}</li>
+                </ul> 
+
+
+                <h5>Reviews:</h5>
+                {% for review in reviews %}
+                    <h6>Username: {{ review.username }}</h6>
+                    <h6>Rated: ({{ review.rated }})</h6>
+                    <p id="review">{{ review.review }}</p>
+                    <hr>
+                {% endfor %}
+
+                {% if permit == 1 %}
+                    <form action="{{ url_for('booki', isbn=book.isbn) }}" method="post">
+                        <div class="form-group">
+                            <label for="inlineRadio">Add my rating: </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio1" value="1">
+                                <label class="form-check-label" for="inlineRadio">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio2" value="2">
+                                <label class="form-check-label" for="inlineRadio">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio3" value="3">
+                                <label class="form-check-label" for="inlineRadio">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio4" value="4">
+                                <label class="form-check-label" for="inlineRadio">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio5" value="5">
+                                <label class="form-check-label" for="inlineRadio">5</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Add my review: </label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review" placeholder="Type your opinion.."></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Add</button>
+                    </form>
+                {% elif permit == 7 %}
+                     <form action="{{ url_for('booki', isbn=book.isbn) }}" method="post">
+                        <div class="form-group">
+                            <label for="inlineRadio">Add my rating: </label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio1" value="1">
+                                <label class="form-check-label" for="inlineRadio">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio2" value="2">
+                                <label class="form-check-label" for="inlineRadio">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio3" value="3">
+                                <label class="form-check-label" for="inlineRadio">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio4" value="4">
+                                <label class="form-check-label" for="inlineRadio">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rated" id="inlineRadio5" value="5">
+                                <label class="form-check-label" for="inlineRadio">5</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Add my review: </label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review" placeholder="Type your opinion.."></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Add</button>
+                    </form>   
+                {% else %}
+                    <div class="alert alert-success" role="alert">
+                        You have already added a review for this book.
+                    </div>
+                {% endif %}
+               
+            </div>
+        </div>
+    </section>  
+{% endblock %}

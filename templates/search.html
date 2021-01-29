@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <header>
+        <div class="top-nav-bar">
+            <div class="logo">
+                <a href="#"><p><strong>B O O K S</strong></p></a>
+            </div>
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section id="search">
+        <div class="boxRegister">
+            <form action="/search" method="post">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="search" id="inlineRadio1" value="isbn">
+                    <label class="form-check-label" for="inlineRadio1">ISBN</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="search" id="inlineRadio2" value="title">
+                    <label class="form-check-label" for="inlineRadio2">Title</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="search" id="inlineRadio2" value="author">
+                    <label class="form-check-label" for="inlineRadio2">Author</label>
+                </div>
+                <div class="form-group">
+                    <input autofocus autocomplete="off" class="form-control" name="books" placeholder="books" type="text">
+                </div>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </section>  
+{% endblock %}

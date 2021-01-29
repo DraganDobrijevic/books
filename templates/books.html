@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block main %}
+    <header>
+        <div class="top-nav-bar">
+            <div class="logo">
+                <a href="{{ url_for('search') }}"><p><strong>B O O K S</strong></p></a>
+            </div>
+            <div class="menu-bar">
+                <ul>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section id="search">
+        <div class="boxResult scrollbar" id="style-1">
+            <div class="force-overflow">
+                <ul>
+                    {% if x%}  
+                        <h5>{{ books }}</h5>
+                    {% else %}
+                        {% for book in books %}
+                            <li id="li-padd"><a href="{{ url_for('booki', isbn=book.isbn) }}">{{ book.isbn }}, {{ book.title }}, {{ book.author }}, {{ book.year }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </div>
+    </section>  
+{% endblock %}
